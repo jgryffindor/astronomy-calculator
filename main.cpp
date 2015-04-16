@@ -19,7 +19,6 @@
 #include "rapidjson/encodings.h"
 #include "rapidjson/filestream.h"
 #include "rapidjson/filereadstream.h"
-#include "BeforeMain.h"
 
 int option, search_option, calculate_option;
 
