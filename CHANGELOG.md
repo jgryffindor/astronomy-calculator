@@ -1,5 +1,11 @@
 # CHANGELOG
 
+	1.1.0
+		+ Added function to convert distance in AU to distance in Meters
+		+ Corrected brightness calculation to use distance in Meters
+		+ Added console output for distance in Meters, as a function of distance in AU
+		+ Corrected function declaration from HrId() to HygID()
+
 	1.0.0 
 		+ Added hygdata_v3.json by converting with Grunt
 		+ Added rapidjson library 

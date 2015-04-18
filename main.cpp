@@ -24,12 +24,13 @@ int option, search_option, calculate_option;
 
 // Function prototypes
 void calculate ();
-void searchHrId();
+void searchHygId();
 void searchProper();
 void searchHipparcos();
 int searchOption();
 double luminosity(double, double);
 double distAU(double);
+double distMeter(double);
 double brightness(double, double);
 
 // Variable Declarations
@@ -49,6 +50,8 @@ double absmag_store;
 std::string spect_store = "";
 std::string spect_result = "";
 double distance_store;
+double distanceAU;
+long double distanceMeter;
 double brightness_store;
 double brightness_result;
 std::string userproperentry;
@@ -56,6 +59,9 @@ std::string userproperentry;
 // Constants
 // 4 * pi
 const long double fourpi = 4 * M_PI;
+// 1 AU = 149,597,870,700 meters
+const long double aumeter = 149597870700.00;
+
 
 int main() {
     std::cout << "Astronomy Calculator!\n";
@@ -63,8 +69,7 @@ int main() {
     std::cout << std::endl;
     std::cout << "Please select an option\n";
     std::cout << "1 to search:\n";
-    std::cout << "2 to calculate:\n";
-    std::cout << "3 to quit:\n";
+    std::cout << "2 to quit:\n";
     
     std::cin >> option;
     
@@ -82,7 +87,7 @@ int main() {
         std::cin >> search_option;
         
         if (search_option == 1){
-            searchHrId();
+            searchHygId();
         }
         else if (search_option == 2){
             searchProper();
@@ -99,10 +104,7 @@ int main() {
         }
 
     }
-    else if (option ==   2){
-    	calculate();
-    }    
-    else if (option == 3){
+    else if (option == 2){
         std::cout << "Thank you for using Astronomy Calculator!\n";
         
         return 0;
@@ -111,15 +113,11 @@ int main() {
         std::cout << "You entered an invalid option.";
     }
 
+    system("pause");
     return 0;
 }
 
-void calculate ()
-{
-    std::cout << "You chose to calculate.\n";
-}
-
-void searchHrId()
+void searchHygId()
 {
     
     FILE * hygjson = fopen ("/Users/justin/Dropbox/school/cs-1410/final-project/git/astronomy-calculator/hygdata_v3.json" , "r");
@@ -177,8 +175,9 @@ void searchHrId()
                 std::cout << "The Hipparcos ID is: " << hip_store << std::endl;
                 std::cout << "The Right Ascension is: " << ra_store << std::setprecision(10) << std::endl;
                 std::cout << "The Declination is: " << dec_store << std::setprecision(10) << std::endl;
-                std::cout << "The Distance in parsecs is: " << dist_store << std::setprecision(10) << std::endl;
+                std::cout << "The Distance in Parsecs is: " << dist_store << std::setprecision(10) << std::endl;
                 std::cout << "The Distance in AU is: " << distAU(dist_store) << std::setprecision(10) << std::endl;
+                std::cout << "The Distance in Meters is:" << distMeter(distAU(dist_store)) << std::setprecision(10) << std::endl;
                 std::cout << "The Spectral Type is: " << spect_result << std::endl;
                 std::cout << "The Luminosity is: "<< lum_store << std::setprecision(10) << std::endl;
                 std::cout << "The Brightness in W/m^2 is: " << brightness(dist_store, lum_store) << std::setprecision(10) << std::endl;
@@ -252,10 +251,12 @@ void searchHipparcos()
             std::cout << "The Hipparcos ID is: " << hip_store << std::endl;
             std::cout << "The Right Ascension is: " << ra_store << std::setprecision(10) << std::endl;
             std::cout << "The Declination is: " << dec_store << std::setprecision(10) << std::endl;
-            std::cout << "The Distance in parsecs is: " << dist_store << std::setprecision(10) << std::endl;
+            std::cout << "The Distance in Parsecs is: " << dist_store << std::setprecision(10) << std::endl;
             std::cout << "The Distance in AU is: " << distAU(dist_store) << std::setprecision(10) << std::endl;
+            std::cout << "The Distance in Meters is:" << distMeter(distAU(dist_store)) << std::setprecision(10) << std::endl;
             std::cout << "The Spectral Type is: " << spect_result << std::endl;
             std::cout << "The Luminosity is: "<< lum_store << std::setprecision(10) << std::endl;
+            std::cout << "The Brightness in W/m^2 is: " << brightness(dist_store, lum_store) << std::setprecision(10) << std::endl;
             
             break;
             
@@ -334,10 +335,12 @@ void searchProper()
             std::cout << "The Hipparcos ID is: " << hip_store << std::endl;
             std::cout << "The Right Ascension is: " << ra_store << std::setprecision(10) << std::endl;
             std::cout << "The Declination is: " << dec_store << std::setprecision(10) << std::endl;
-            std::cout << "The Distance in parsecs is: " << dist_store << std::setprecision(10) << std::endl;
+            std::cout << "The Distance in Parsecs is: " << dist_store << std::setprecision(10) << std::endl;
             std::cout << "The Distance in AU is: " << distAU(dist_store) << std::setprecision(10) << std::endl;
+            std::cout << "The Distance in Meters is:" << distMeter(distAU(dist_store)) << std::setprecision(10) << std::endl;
             std::cout << "The Spectral Type is: " << spect_result << std::endl;
             std::cout << "The Luminosity is: "<< lum_store << std::setprecision(10) << std::endl;
+            std::cout << "The Brightness in W/m^2 is: " << brightness(dist_store, lum_store) << std::setprecision(10) << std::endl;
             
             break;
             
@@ -351,14 +354,19 @@ void searchProper()
 }
 
 
-// Distance - convert to AU from parsecs
+// Distance - convert to AU from Parsecs
 double distAU(double dist_store){
-    
-    long double distanceAU;
     
     distanceAU = dist_store * 3.262;
     
     return distanceAU;
+}
+// Distance - convert to meters from AU
+double distMeter(double distanceAU){
+    
+    distanceMeter = distanceAU * aumeter;
+    
+    return distanceMeter;
 }
 
 // Brightness
@@ -374,7 +382,7 @@ double brightness(double lum, double dist){
         return 0;
     }
     
-    dist = dist_store;
+    dist = distanceMeter;
     
     denom = ( fourpi * ( pow(dist, 2.0) ) );
     
