@@ -280,9 +280,6 @@ void searchProper()
     
     std::cout << "Please enter a proper name to search.\n";
     
-//    std::getline(std::cin, userproperentry);
-
-    
     std::cin.ignore();
     std::getline(std::cin, userproperentry);
     
