@@ -58,7 +58,7 @@ std::string userproperentry;
 
 // Constants
 // 4 * pi
-const long double fourpi = 4 * M_PI;
+const long double fourpi = 12.5663706144;
 // 1 AU = 149,597,870,700 meters
 const long double aumeter = 149597870700.00;
 
@@ -120,7 +120,7 @@ int main() {
 void searchHygId()
 {
     
-    FILE * hygjson = fopen ("/Users/justin/Dropbox/school/cs-1410/final-project/git/astronomy-calculator/hygdata_v3.json" , "r");
+    FILE * hygjson = fopen ("hygdata_v3.json" , "rb");
     char readBuffer[65536];
     rapidjson::FileReadStream is(hygjson, readBuffer, sizeof(readBuffer));
     rapidjson::Document document;
@@ -196,7 +196,7 @@ void searchHygId()
 void searchHipparcos()
 {
     
-    FILE * hygjson = fopen ("/Users/justin/Dropbox/school/cs-1410/final-project/git/astronomy-calculator/hygdata_v3.json" , "r");
+    FILE * hygjson = fopen ("hygdata_v3.json" , "rb");
     char readBuffer[65536];
     rapidjson::FileReadStream is(hygjson, readBuffer, sizeof(readBuffer));
     rapidjson::Document document;
@@ -272,7 +272,7 @@ void searchHipparcos()
 void searchProper()
 {
     
-    FILE * hygjson = fopen ("/Users/justin/Dropbox/school/cs-1410/final-project/git/astronomy-calculator/hygdata_v3.json" , "r");
+    FILE * hygjson = fopen ("hygdata_v3.json" , "rb");
     char readBuffer[65536];
     rapidjson::FileReadStream is(hygjson, readBuffer, sizeof(readBuffer));
     rapidjson::Document document;

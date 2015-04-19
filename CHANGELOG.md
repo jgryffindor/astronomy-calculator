@@ -1,4 +1,9 @@
 # CHANGELOG
+	
+	1.2.2
+		^ main.cpp
+			^ const fourpi - replaced M_PI
+			^ FILE* declarations, modified path location of file and changed 'r' to 'rb' for Windows users
 
 	1.2.1
 		^ CHANGELOG
