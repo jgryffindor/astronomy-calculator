@@ -1,5 +1,12 @@
 # CHANGELOG
 
+	1.2.1
+		^ CHANGELOG
+
+	1.2.0
+		^ main.cpp - removed comment
+		^ hygdata_v3.json - formatted spacing
+
 	1.1.1
 		^ CHANGELOG
 	1.1.0

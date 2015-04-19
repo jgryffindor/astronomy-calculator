@@ -24,3 +24,9 @@ I'm all ears for information, critiques and pulls, especially with the following
 
   - Header parser, to modularize the initial JSON parse as an #include. 
   - Assertions and Error Handling
+
+#### Visual Studio 2013 Notice
+
+The program throws errors in VS2013 for a deprecated fopen method. To disable deprecation and avoid any errors add a preprocessor definition to the project proerties. 
+ 	
+Preprocessor Definition - _CRT_SECURE_NO_WARNINGS
